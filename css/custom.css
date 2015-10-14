@@ -26,3 +26,11 @@ p, div, a {
 .navbar-brand {
 	color: white;
 }
+
+.btn-main {
+	background-color: #0491d1;
+}
+
+.btn-main:hover {
+	background-color: black;
+}
