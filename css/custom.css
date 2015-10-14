@@ -10,11 +10,19 @@ p, div, a {
 	font-family: 'Lato', sans-serif;
 }
 
+.navbar {
+	background-color: #0491d1;
+	color: #fff;
+}
 
+.navbar-nav>li>a {
+	color: white;
+}
+.navbar-nav>li>a:hover {
+	background-color: inherit;
+	color: #2a2a2a;
+}
 
-
-
-
-
-
-
+.navbar-brand {
+	color: white;
+}
