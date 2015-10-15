@@ -1,11 +1,10 @@
-<div class="row">
+<div ng-repeat="g in grade" ng-if="$index % 2 == 0" class="row">
   <div class="col-sm-6 text-center">
-    <a class="btn btn-primary btn-lg btn-main" href="#" role="button">School Results</a>
+    <h2 class="proper">{{grade[$index].grade}} </h2>
+    <nvd3 options="chart_options" data="grade[$index].data"></nvd3>
   </div>
   <div class="col-sm-6 text-center">
-    <a class="btn btn-primary btn-lg btn-main" href="#" role="button">Grade Results</a>
-  </div>
-  <div>
-    <nvd3 options="chart_options" data="chart_data"></nvd3>
+    <h2 class="proper">{{grade[$index + 1].grade}} </h2>
+    <nvd3 options="chart_options" data="grade[$index + 1].data"></nvd3>
   </div>
 </div>
