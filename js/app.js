@@ -4,7 +4,11 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
         templateUrl: 'views/grade_results.html'
     }).
     when('/school-results', {
-        templateUrl: 'views/school_results.html'
+        templateUrl: 'views/school_results.html',
+        controller: 'schoolReportsCtrl'
+    }).
+    when('/php/schoolAvg.php', {
+        templateUrl: '/php/schoolAvg.php'
     }).
     when('/', {
         templateUrl: 'views/main.html',
@@ -80,6 +84,50 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
 
 
     $scope.number = 100;
+$scope.getNumber = function(num) {
+    return new Array(num);   
+}
+
+    $scope.matchups = function() {
+        
+        console.log('fetching info');
+        $http.get('php/matchups.php?character='+$scope.selectedCharacter+'&opponent='+$scope.selectedOpponent)
+        .success(function (data, status) {
+            console.log('fetching info worked');
+            console.log(data);
+            console.log(status);
+            $scope.data.characterTips = data.characterTips;
+            $scope.data.opponentTips = data.opponentTips;
+            $scope.data.characterPercentage = data.percentage;
+            $scope.data.opponentPercentage = 100 - data.percentage;
+        })
+        .error(function (data, status){
+            console.log('fetching info failed');
+        });
+    }
+
+    $scope.matchups();
+})
+.controller('schoolReportsCtrl', function($scope, $http) {
+    $scope.data = {};
+
+    $scope.selectedCharacter = "Fox";
+    $scope.selectedOpponent  = "Falco";
+    $scope.data.characters = ["Fox", "Falco", "Sheik", "Marth"];
+
+
+    $scope.schools = {
+      'Burnet':{},
+      'a': {},
+      'b': {},
+      'c': {},
+      'd': {},
+      'e': {},
+      'f': {}
+    };
+
+
+    $scope.number = 8;
 $scope.getNumber = function(num) {
     return new Array(num);   
 }
