@@ -5,7 +5,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
     }).
     when('/school-results', {
         templateUrl: 'views/school_results.html',
-        controller: 'schoolReportsCtrl'
+        controller: 'schoolResultsCtrl'
     }).
     when('/php/schoolAvg.php', {
         templateUrl: '/php/schoolAvg.php'
@@ -103,47 +103,91 @@ $scope.getNumber = function(num) {
 
     $scope.matchups();
 })
-.controller('schoolReportsCtrl', function($scope, $http) {
+.controller('schoolResultsCtrl', function($scope, $http) {
     $scope.data = {};
 
-    $scope.selectedCharacter = "Fox";
-    $scope.selectedOpponent  = "Falco";
-    $scope.data.characters = ["Fox", "Falco", "Sheik", "Marth"];
+    $scope.chart_options = {
+            chart: {
+                type: 'discreteBarChart',
+                height: 300,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 60,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                showValues: true,
+                valueFormat: function(d){
+                    return d3.format(',.4f')(d);
+                },
+                transitionDuration: 500,
+                xAxis: {
+                    axisLabel: 'Grade'
+                },
+                yAxis: {
+                    axisLabel: 'Average',
+                    axisLabelDistance: 30
+                }
+            }
+        };
+
+    $scope.chart_data = [
+        {
+            key: "Cumulative Return",
+            values: [
+                {
+                    "label" : "6th" ,
+                    "value" : 1.1 / 6 * 100
+                } ,
+                {
+                    "label" : "7th" ,
+                    "value" : 1 / 6  * 100
+                } ,
+                {
+                    "label" : "8th" ,
+                    "value" : 2 / 6 * 100
+                } ,
+                {
+                    "label" : "School" ,
+                    "value" : 1.5 / 6 * 100
+                }
+            ]
+        }
+    ];
 
 
     $scope.schools = {
-      'Burnet':{},
-      'a': {},
-      'b': {},
-      'c': {},
-      'd': {},
-      'e': {},
-      'f': {}
+      'burnet':{},
+      'mendez': {}
     };
 
 
     $scope.number = 8;
-$scope.getNumber = function(num) {
-    return new Array(num);   
-}
+    $scope.getNumber = function(num) {
+        return new Array(num);   
+    }
 
-    $scope.matchups = function() {
+    $scope.get_school_data = function(school) {
         
         console.log('fetching info');
-        $http.get('php/matchups.php?character='+$scope.selectedCharacter+'&opponent='+$scope.selectedOpponent)
+        $http.get('sample_data/school/'+school+'_data.json')
         .success(function (data, status) {
             console.log('fetching info worked');
             console.log(data);
             console.log(status);
-            $scope.data.characterTips = data.characterTips;
-            $scope.data.opponentTips = data.opponentTips;
-            $scope.data.characterPercentage = data.percentage;
-            $scope.data.opponentPercentage = 100 - data.percentage;
+
+            $scope.schools[school] = data;
+            
         })
         .error(function (data, status){
             console.log('fetching info failed');
         });
-    }
+    };
 
-    $scope.matchups();
+
+    angular.forEach($scope.schools, function(value, key) {
+        $scope.get_school_data(key);
+    });
 });

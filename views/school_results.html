@@ -1,10 +1,6 @@
-<div ng-repeat="s in school" ng-if="$index % 2 == 0" class="row">
-  <div class="col-sm-6 text-center">
-    <h2 class="proper">{{school[$index].school}} </h2>
-    <nvd3 options="chart_options" data="school[$index].data"></nvd3>
-  </div>
-  <div class="col-sm-6 text-center">
-    <h2 class="proper">{{school[$index + 1].school}} </h2>
-    <nvd3 options="chart_options" data="school[$index + 1].data"></nvd3>
+<div class="row">
+  <div class="col-sm-6 text-center" ng-repeat="s in schools">
+    <h2 class="proper">{{s.data[0].school}} </h2>
+    <nvd3 options="chart_options" data = "chart_data" ></nvd3>
   </div>
 </div>
