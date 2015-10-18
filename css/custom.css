@@ -4,6 +4,7 @@ body {
 
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: 'Roboto', sans-serif;
+	color: #2a2a2a;
 }
 
 p, div, a {
@@ -34,3 +35,38 @@ p, div, a {
 .btn-main:hover {
 	background-color: black;
 }
+
+.data_info {
+	font-size: 1.4em;
+}
+
+.data_info .focus {
+	color: #0491d1;
+}
+
+.data_info .results {
+	font-size: .8em;
+}
+
+h1 {
+	font-size: 3em;
+    font-weight: 900;
+    color: #2a2a2a;
+}
+
+.grades {
+	margin-bottom: 30px;
+}
+.grades:last-child {
+	margin-bottom: 0px;
+}
+
+.school {
+	padding-bottom: 30px;
+	border-bottom: 1px solid #cacaca;
+}
+.school:last-child {
+	margin-bottom: 0px;
+	border: 0;
+}
+
