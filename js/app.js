@@ -1,7 +1,8 @@
 angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/grade-results', {
-        templateUrl: 'views/grade_results.html'
+        templateUrl: 'views/grade_results.html',
+        controller : 'gradeResultsCtrl'
     }).
     when('/school-results', {
         templateUrl: 'views/school_results.html',
@@ -18,6 +19,10 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
         redirectTo: '/'
     });
 }])
+.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+    cfpLoadingBarProvider.includeBar = true;
+  }])
 .controller('mainCtrl', function($scope, $http) {
     $scope.data = {};
 
@@ -77,31 +82,6 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
         }
     ];
 
-
-    $scope.number = 100;
-$scope.getNumber = function(num) {
-    return new Array(num);   
-}
-
-    $scope.matchups = function() {
-        
-        console.log('fetching info');
-        $http.get('php/matchups.php?character='+$scope.selectedCharacter+'&opponent='+$scope.selectedOpponent)
-        .success(function (data, status) {
-            console.log('fetching info worked');
-            console.log(data);
-            console.log(status);
-            $scope.data.characterTips = data.characterTips;
-            $scope.data.opponentTips = data.opponentTips;
-            $scope.data.characterPercentage = data.percentage;
-            $scope.data.opponentPercentage = 100 - data.percentage;
-        })
-        .error(function (data, status){
-            console.log('fetching info failed');
-        });
-    }
-
-    $scope.matchups();
 })
 .controller('schoolResultsCtrl', function($scope, $http) {
     $scope.data = {};
@@ -190,4 +170,79 @@ $scope.getNumber = function(num) {
     angular.forEach($scope.schools, function(value, key) {
         $scope.get_school_data(key);
     });
+})
+.controller('gradeResultsCtrl', function($scope, $http) {
+    $scope.data = {};
+
+    $scope.chart_options = {
+            chart: {
+                type: 'discreteBarChart',
+                height: 300,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 60,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                showValues: true,
+                valueFormat: function(d){
+                    return d3.format(',.4f')(d);
+                },
+                transitionDuration: 500,
+                xAxis: {
+                    axisLabel: 'Grade'
+                },
+                yAxis: {
+                    axisLabel: 'Average',
+                    axisLabelDistance: 30
+                }
+            }
+        };
+
+    $scope.chart_data = [
+        {
+            key: "Cumulative Return",
+            values: [
+                {
+                    "label" : "6th" ,
+                    "value" : 1.1 / 6 * 100
+                } ,
+                {
+                    "label" : "7th" ,
+                    "value" : 1 / 6  * 100
+                } ,
+                {
+                    "label" : "8th" ,
+                    "value" : 2 / 6 * 100
+                } ,
+                {
+                    "label" : "School" ,
+                    "value" : 1.5 / 6 * 100
+                }
+            ]
+        }
+    ];
+
+
+    $scope.grades = {};
+
+
+
+    $scope.get_grade_data = function() {
+        
+        console.log('fetching info');
+        $http.get('sample_data/grade/grade_6.json')
+        .success(function (data, status) {
+            $scope.grades = data;
+            console.log(data);
+            
+        })
+        .error(function (data, status){
+            console.log('fetching info failed');
+        });
+    };
+
+    $scope.get_grade_data();
 });
