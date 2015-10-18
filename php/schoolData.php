@@ -49,6 +49,7 @@ foreach ($SCHOOLS as $school) {
 	    $grade_data["overall_results"] = [];
 	    $grade_data["results_per_question"] = [];
 
+	    
 	    for ($i = 0; $i < 7; $i++) {
 	    	$overall_sql = "SELECT COUNT(*) FROM bgca_reporting_pre_survey where SCHOOL='$school' and GRADE='$grade' and TOTAL=$i";
 	    	$grade_data["overall_results"]["$i_correct"] = pg_query($dbh, $overall_sql);
