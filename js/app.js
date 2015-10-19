@@ -26,11 +26,6 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
 .controller('mainCtrl', function($scope, $http) {
     $scope.data = {};
 
-    $scope.selectedCharacter = "Fox";
-    $scope.selectedOpponent  = "Falco";
-    $scope.data.characters = ["Fox", "Falco", "Sheik", "Marth"];
-
-
     $scope.chart_options = {
       chart: {
         type: 'pieChart',
@@ -142,12 +137,6 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
       'burnet':{},
       'mendez': {}
     };
-
-
-    $scope.number = 8;
-    $scope.getNumber = function(num) {
-        return new Array(num);   
-    }
 
     $scope.get_school_data = function(school) {
         
