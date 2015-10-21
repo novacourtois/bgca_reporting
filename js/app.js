@@ -47,6 +47,54 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
     cfpLoadingBarProvider.includeSpinner = true;
     cfpLoadingBarProvider.includeBar = true;
   }])
+.factory('gameTechGradeData', function($http) {
+   return {
+     pre_survey: function() {
+       return $http.get('sample_data/grade/grade_6.json').then(function(result) {
+           return result.data;
+       });
+     },
+     post_survey: function() {
+       return $http.get('sample_data/grade/grade_6.json').then(function(result) {
+           return result.data;
+       });
+     },
+     chart_options: function() {
+       return $http.get('sample_data/grade/grade_6.json').then(function(result) {
+           return result.data;
+       });
+     },
+     chart_type: function() {
+       return $http.get('sample_data/grade/grade_6.json').then(function(res-ult) {
+           return result.data;
+       });
+     }
+   }
+})
+.factory('gameTechSchoolData', function($http) {
+   return {
+     pre_survey: function() {
+       return $http.get('sample_data/schoool/grade_6.json').then(function(result) {
+           return result.data;
+       });
+     },
+     post_survey: function() {
+       return $http.get('sample_data/school/grade_6.json').then(function(result) {
+           return result.data;
+       });
+     },
+     chart_options: function() {
+       return $http.get('sample_data/school/grade_6.json').then(function(result) {
+           return result.data;
+       });
+     },
+     chart_type: function() {
+       return $http.get('sample_data/school/grade_6.json').then(function(res-ult) {
+           return result.data;
+       });
+     }
+   }
+})
 .controller('mainCtrl', function($scope, $http) {
     $scope.data = {};
 
