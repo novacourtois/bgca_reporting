@@ -51,7 +51,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
    return {
      pre_survey: function() {
        return $http.get('sample_data/grade/grade_6.json').then(function(result) {
-           return result.data;
+           return result;
        });
      },
      post_survey: function() {
@@ -74,7 +74,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
 .factory('gameTechSchoolData', function($http) {
    return {
      pre_survey: function() {
-       return $http.get('sample_data/schoool/grade_6.json').then(function(result) {
+       return $http.get('sample_data/school/grade_6.json').then(function(result) {
            return result.data;
        });
      },
@@ -89,7 +89,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
        });
      },
      chart_type: function() {
-       return $http.get('sample_data/school/grade_6.json').then(function(res-ult) {
+       return $http.get('sample_data/school/grade_6.json').then(function(result) {
            return result.data;
        });
      }
@@ -232,7 +232,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
         $scope.get_school_data(key);
     });
 })
-.controller('gameTechPreSurveyGradeResultsCtrl', function($scope, $http) {
+.controller('gameTechPreSurveyGradeResultsCtrl', function($scope, $http, gameTechGradeData) {
     $scope.data = {};
 
     $scope.chart_options = {
@@ -294,14 +294,8 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
     $scope.get_grade_data = function() {
         
         console.log('fetching info');
-        $http.get('sample_data/grade/grade_6.json')
-        .success(function (data, status) {
+        gameTechGradeData.pre_survey().then(function(data) {
             $scope.grades = data;
-            console.log(data);
-            
-        })
-        .error(function (data, status){
-            console.log('fetching info failed');
         });
     };
 
