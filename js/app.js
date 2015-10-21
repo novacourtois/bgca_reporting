@@ -1,19 +1,43 @@
 angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
 .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/grade-results', {
-        templateUrl: 'views/grade_results.html',
-        controller : 'gradeResultsCtrl'
+    $routeProvider.when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'mainCtrl'
     }).
-    when('/school-results', {
-        templateUrl: 'views/school_results.html',
-        controller: 'schoolResultsCtrl'
+    when('/game-tech/pre-survey/grade-results/', {
+        templateUrl: 'views/game_tech/pre_survey/grade_results.html',
+        controller : 'gameTechPreSurveyGradeResultsCtrl'
+    }).
+    when('/game-tech/pre-survey/school-results', {
+        templateUrl: 'views/game_tech/pre_survey/school_results.html',
+        controller: 'gameTechPreSurveySchoolResultsCtrl'
+    }).
+    when('/game-tech/post-survey/grade-results/', {
+        templateUrl: 'views/waiting.html'
+    }).
+    when('/game-tech/post-survey/school-results', {
+        templateUrl: 'views/waiting.html'
+    }).
+    when('/game-tech/progress-results/', {
+        templateUrl: 'views/waiting.html'
+    }).
+    when('/clay-tech/pre-survey/grade-results/', {
+        templateUrl: 'views/waiting.html'
+    }).
+    when('/clay-tech/pre-survey/school-results', {
+        templateUrl: 'views/waiting.html'
+    }).
+    when('/clay-tech/post-survey/grade-results/', {
+        templateUrl: 'views/waiting.html'
+    }).
+    when('/clay-tech/post-survey/school-results', {
+        templateUrl: 'views/waiting.html'
+    }).
+    when('/clay-tech/progress-results/', {
+        templateUrl: 'views/waiting.html'
     }).
     when('/php/schoolAvg.php', {
         templateUrl: '/php/schoolAvg.php'
-    }).
-    when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'mainCtrl'
     }).
     otherwise({
         redirectTo: '/'
@@ -78,7 +102,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
     ];
 
 })
-.controller('schoolResultsCtrl', function($scope, $http) {
+.controller('gameTechPreSurveySchoolResultsCtrl', function($scope, $http) {
     $scope.data = {};
 
     $scope.chart_options = {
@@ -160,7 +184,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
         $scope.get_school_data(key);
     });
 })
-.controller('gradeResultsCtrl', function($scope, $http) {
+.controller('gameTechPreSurveyGradeResultsCtrl', function($scope, $http) {
     $scope.data = {};
 
     $scope.chart_options = {
