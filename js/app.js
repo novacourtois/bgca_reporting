@@ -57,16 +57,6 @@ angular.module('bgca',['chieffancypants.loadingBar', 'ngAnimate', 'ngRoute', 'nv
        return $http.get('sample_data/grade/grades.json').then(function(result) {
            return result.data;
        });
-     },
-     chart_options: function() {
-       return $http.get('sample_data/grade/grades.json').then(function(result) {
-           return result.data;
-       });
-     },
-     chart_type: function() {
-       return $http.get('sample_data/grade/grades.json').then(function(result) {
-           return result.data;
-       });
      }
    }
 })
@@ -81,14 +71,18 @@ angular.module('bgca',['chieffancypants.loadingBar', 'ngAnimate', 'ngRoute', 'nv
        return $http.get('sample_data/school/grades.json').then(function(result) {
            return result.data;
        });
-     },
-     chart_options: function() {
-       return $http.get('sample_data/school/grades.json').then(function(result) {
+     }
+   }
+})
+.factory('ChartData', function($http) {
+   return {
+      chart_options: function() {
+       return $http.get('sample_data/chart_options.json').then(function(result) {
            return result.data;
        });
      },
      chart_type: function() {
-       return $http.get('sample_data/school/grades.json').then(function(result) {
+       return $http.get('sample_data/chart_data.json').then(function(result) {
            return result.data;
        });
      }
