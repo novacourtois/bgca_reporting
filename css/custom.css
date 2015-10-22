@@ -88,3 +88,19 @@ h1.main_header {
 	border: 0;
 }
 
+/* ANGULAR LOADING BAR*/
+#loading-bar .bar {
+	background: #fff;
+}
+
+#loading-bar .peg {
+	-moz-box-shadow: #fff 1px 0 6px 1px;
+	-ms-box-shadow: #fff 1px 0 6px 1px;
+	-webkit-box-shadow: #fff 1px 0 6px 1px;
+	box-shadow: #fff 1px 0 6px 1px;
+}
+
+#loading-bar-spinner .spinner-icon {
+	border-top-color:  #fff;
+	border-left-color: #fff;
+}

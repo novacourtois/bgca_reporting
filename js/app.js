@@ -1,4 +1,4 @@
-angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
+angular.module('bgca',['chieffancypants.loadingBar', 'ngAnimate', 'ngRoute', 'nvd3'])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'views/main.html',
@@ -43,6 +43,9 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
         redirectTo: '/'
     });
 }])
+.config(function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+  })
 .factory('gameTechGradeData', function($http) {
    return {
      pre_survey: function() {
