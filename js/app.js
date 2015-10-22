@@ -51,7 +51,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
    return {
      pre_survey: function() {
        return $http.get('sample_data/grade/grade_6.json').then(function(result) {
-           return result;
+           return result.data;
        });
      },
      post_survey: function() {
@@ -65,7 +65,7 @@ angular.module('bgca',['angular-loading-bar', 'ngAnimate', 'ngRoute', 'nvd3'])
        });
      },
      chart_type: function() {
-       return $http.get('sample_data/grade/grade_6.json').then(function(res-ult) {
+       return $http.get('sample_data/grade/grade_6.json').then(function(result) {
            return result.data;
        });
      }
