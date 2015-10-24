@@ -8,11 +8,11 @@
         controller: 'mainCtrl'
     }).
     when('/game-tech/pre-survey/grade-results/', {
-        templateUrl: 'views/game_tech/pre_survey/grade_results.html',
+        templateUrl: 'views/game_tech/grade_results.html',
         controller : 'gameTechPreSurveyGradeResultsCtrl'
     }).
     when('/game-tech/pre-survey/school-results', {
-        templateUrl: 'views/game_tech/pre_survey/school_results.html',
+        templateUrl: 'views/game_tech/school_results.html',
         controller: 'gameTechPreSurveySchoolResultsCtrl'
     }).
     when('/game-tech/post-survey/grade-results/', {

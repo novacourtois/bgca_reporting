@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-sm-12 text-center">
-        <h1 class="main_header">Game Tech Post-Survey School Results</h1>
+        <h1 class="main_header">{{schools.title}}</h1>
     </div>
 </div>
-<div class="row main" ng-repeat="s in schools" ng-cloak>
+<div class="row main" ng-repeat="s in schools.schools" ng-cloak>
   <div class="col-sm-12 text-center" id="{{s.name}}">
     <h1>{{s.name}}</h1>
 
     <h2>Overall Data</h2>
     <div class="data_info">
 
-    	{{s.name}} had <span class="focus">{{s.num_students}}</span> students complete the <span class="focus">Game Tech</span> post-survey.</br>
+    	{{s.name}} had <span class="focus">{{s.num_students}}</span> students complete the <span class="focus">Game Tech</span> {{schools.type}}.</br>
     	The school <span class="focus">average</span> was <span class="focus">{{s.average }}</span> <ng-pluralize count="s.average" when="{'1': 'question', 'other': 'questions'}"></ng-pluralize> correct out of 6.
     </div>
 

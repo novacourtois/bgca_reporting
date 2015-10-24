@@ -1,4 +1,6 @@
 {
+    "title": "Game Tech Pre-Survey School Results",
+    "type" :"pre-survey",
     "schools": [{
         "name": "Burnet",
         "num_students" : 100,
