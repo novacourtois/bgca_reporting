@@ -16,13 +16,16 @@
         controller: 'gameTechPreSurveySchoolResultsCtrl'
     }).
     when('/game-tech/post-survey/grade-results/', {
-        templateUrl: 'views/waiting.html'
+        templateUrl: 'views/game_tech/grade_results.html',
+        controller : 'gameTechPostSurveyGradeResultsCtrl'
     }).
     when('/game-tech/post-survey/school-results', {
-        templateUrl: 'views/waiting.html'
+        templateUrl: 'views/game_tech/school_results.html',
+        controller: 'gameTechPostSurveySchoolResultsCtrl'
     }).
     when('/game-tech/progress-results/', {
-        templateUrl: 'views/waiting.html'
+        templateUrl: 'views/game_tech/progress.html',
+        controller: 'gameTechProgressCtrl'
     }).
     when('/clay-tech/pre-survey/grade-results/', {
         templateUrl: 'views/waiting.html'

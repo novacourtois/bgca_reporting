@@ -8,13 +8,13 @@
     $scope.chart_options = {};
     $scope.chart_data = [];
 
-    $scope.grades = {};
+    $scope.schools = {};
 
     $scope.get_grade_data = function() {
         
       console.log('fetching info');
       gameTechSchoolData.post_survey().then(function(data) {
-        $scope.grades = data;
+        $scope.schools = data;
       });
     };
 
