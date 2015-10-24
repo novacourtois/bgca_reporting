@@ -4,7 +4,7 @@ body {
 
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: 'Roboto', sans-serif;
-	color: #2a2a2a;
+	color: #22313F;
 }
 
 p, div, a {
@@ -12,7 +12,7 @@ p, div, a {
 }
 
 .navbar {
-	background-color: #0491d1;
+	background-color: #22A7F0;
 	color: #fff;
 }
 
@@ -30,7 +30,8 @@ p, div, a {
 }
 
 .dropdown-menu>li>a:hover {
-	background-color: #0491d1;
+	background-color: #22A7F0;
+	
 	color: #fff;
 }
 
@@ -39,7 +40,7 @@ p, div, a {
 }
 
 .btn-main {
-	background-color: #0491d1;
+	background-color: #22A7F0;
 }
 
 .btn-main:hover {
@@ -51,7 +52,15 @@ p, div, a {
 }
 
 .data_info .focus {
-	color: #0491d1;
+	color: #22A7F0;
+}
+
+.data_info .positive {
+	color: #26A65B;
+}
+
+.data_info .negative {
+	color: #F22613;
 }
 
 .data_info .results {
@@ -61,12 +70,12 @@ p, div, a {
 h1 {
 	font-size: 2.8em;
     font-weight: 900;
-    color: #2a2a2a;
+    color: #22313F;
 }
 
 h1.main_header {
 	font-size: 3.5em;
-    color: #0491d1;
+    color: #22A7F0;
     font-weight: 100;
     font-family: 'Lato', sans-serif;
 
@@ -75,6 +84,7 @@ h1.main_header {
 .grades {
 	margin-bottom: 30px;
 }
+
 .grades:last-child {
 	margin-bottom: 0px;
 }
