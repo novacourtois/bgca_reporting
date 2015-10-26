@@ -23,9 +23,9 @@
         templateUrl: 'views/game_tech/school_results.html',
         controller: 'gameTechPostSurveySchoolResultsCtrl'
     }).
-    when('/game-tech/progress-results/', {
-        templateUrl: 'views/game_tech/progress.html',
-        controller: 'gameTechProgressCtrl'
+    when('/game-tech/school-progress-results/', {
+        templateUrl: 'views/game_tech/school_progress.html',
+        controller: 'gameTechSchoolProgressCtrl'
     }).
     when('/clay-tech/pre-survey/grade-results/', {
         templateUrl: 'views/waiting.html'
